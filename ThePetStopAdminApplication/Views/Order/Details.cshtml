@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ThePetStopAdminApplication.Models.Order
+
+<div class="container">
+    <div class="m-3">
+        <a class="btn btn-success">Order for : @Model.User.UserName</a>
+    </div>
+    @for ( int i=0; i<Model.ProductInOrders.Count; i++){
+        var item = Model.ProductInOrders.ElementAt(i).Product;
+        if (i % 3 == 0)
+        {
+            @:<div class="row">
+        }
+
+        <div class="col-md-3 m-4">
+                <div class="card" style="width: 18rem;">
+                  <img style="width: 18rem; height:400px;" src="@item.ProductImage" class="card-img-top" alt="Image for product"/>
+                  <div class="card-body">
+                    <h5 class="card-title">@item.ProductName</h5>
+                    <p class="card-text">@item.ProductDescription</p>
+                    <p class="card-text"><b>@item.ProductPrice</b></p>
+                    <p class="card-text">@item.ProductAnimal</p>
+                    <p class="card-text">@item.ProductCategory</p>
+
+                  </div>
+                 
+                </div>
+        </div>
+
+        if (i % 3 == 2)
+        {
+            @:</div>
+        }
+    }
+</div>
+
+<div>Order details</div>
